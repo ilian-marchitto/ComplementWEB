@@ -1,0 +1,20 @@
+
+.bordure-bleue {
+    border: 2px solid blue;
+    padding: 10px;
+}
+
+.bordure-rouge {
+    border: 2px solid red;
+    padding: 10px;
+}
+
+.bordure-verte {
+    border: 2px solid green;
+    padding: 10px;
+}
+
+.bordure-orange {
+    border: 2px solid orange;
+    padding: 10px;
+}

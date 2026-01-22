@@ -23,11 +23,37 @@ function afficherValeurParValeur() {
     let i = 0;
     setInterval(function () {
         if (i < A_tableau20Valeurs.length) {
+
             O_firstValue.textContent = A_tableau20Valeurs[i];
-        } else {
-            clearInterval();
-        }
+
+            let O_elementDiv = document.getElementById("bordure");
+            let O_commentaire = document.getElementById("commentaire");
+            let O_temperatureMeter = document.getElementById("temperatureMeter");
+            O_commentaire.hidden = true;
+            if (A_tableau20Valeurs[i] < 0) {
+                O_commentaire.hidden = false;
+                O_commentaire.textContent = "Brrrrrrr, un peu froid ce matin, mets ta cagoule !";
+                O_elementDiv.className = "bordure-bleue";
+                O_temperatureMeter.setAttribute("value", A_tableau20Valeurs[i]);
+            } else if (A_tableau20Valeurs[i] >= 0 && A_tableau20Valeurs[i] < 20) {
+                O_commentaire.hidden = true;
+                O_elementDiv.className = "bordure-verte";
+                O_temperatureMeter.setAttribute("value", A_tableau20Valeurs[i]);
+            } else if (A_tableau20Valeurs[i] >= 20 && A_tableau20Valeurs[i] < 30) {
+                O_commentaire.hidden = true;
+                O_elementDiv.className = "bordure-orange";
+                O_temperatureMeter.setAttribute("value", A_tableau20Valeurs[i]);
+            } else if (A_tableau20Valeurs[i] >= 30) {
+                O_commentaire.hidden = false;
+                O_commentaire.textContent = "Caliente ! Vamos a la playa, ho hoho hoho !!";
+                O_elementDiv.className = "bordure-rouge";
+                O_temperatureMeter.setAttribute("value", A_tableau20Valeurs[i]);
+            }
+            
+        } else {i = -1;}
+        clearInterval();
         i++;
-    }, 1000);
+    }, 2000);
 }
 afficherValeurParValeur();
+
