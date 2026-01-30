@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
     <title>TD1</title>
 </head>
 <body>
-    <h1>Exercice 1 : Génération de valeurs aléatoires</h1>
-    <h2 id="commentaire"></h2>
-    <div id="bordure">
-        <p>Température : <meter id="temperatureMeter" min="-10" max="40" low="-1" optimum="20" high="30"></meter> <span id="O_firstValue" data-unit="°C"></span>°C </p>
-    </div>
-    <script src="script.js"></script>
+    <h1 id="dialogTitre">Exercice 1 : Génération de valeurs aléatoires</h1>
+    <button id="afficherPartieTemperature">Afficher la partie température</button>
+    <button id="afficherPartieHistorique">Afficher la partie historique</button>
+
+    <section id="partieTemprature" role="dialog" aria-labelledby="dialogTitre" aria-describedby="dialogTemperature">
+        <h2 role="alert" id="commentaire"></h2>
+        <div id="bordure" aria-live='assertive'>
+            <p id="dialogTemperature">Température : <meter id="temperatureMeter" min="-10" max="40" low="-1" optimum="20" high="30"></meter> <span id="O_firstValue" data-unit="°C"></span>°C </p>
+        </div>
+    </section>
+    
+
+    <section id="partieHistorique" role="region" aria-labelledby="historiqueTitre">
+        <ul id="historique" aria-live="polite">
+            <h2 id="historiqueTitre">Historique des températures :</h2>
+        </ul>
+    </section>
 </body>
 </html>
