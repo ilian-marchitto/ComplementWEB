@@ -1,4 +1,4 @@
-class C_script {
+class C_gererValeurTempsReel {
     constructor() {}
 
     // Fonction pour afficher chaque valeur du tableau une par une toutes les secondes
@@ -57,25 +57,4 @@ class C_script {
             i++;
         }, 2000);
     }
-
-    GestionnairePage() {
-        // Gestion de l'affichage des parties température et historique
-        const O_temperature = document.getElementById("afficherPartieTemperature");
-        const O_historique = document.getElementById("afficherPartieHistorique");
-
-        let O_partieTemprature = document.getElementById("partieTemprature");
-        let O_partieHistorique = document.getElementById("partieHistorique");
-        O_partieTemprature.hidden = true;
-        O_partieHistorique.hidden = true;
-
-        O_temperature.addEventListener("click", function () {
-            O_partieTemprature.hidden = !O_partieTemprature.hidden;
-        });
-
-        O_historique.addEventListener("click", function () {
-            O_partieHistorique.hidden = !O_partieHistorique.hidden;
-        });
-    }
 }
-
-new C_script();
