@@ -1,19 +1,38 @@
-// La classe crée un tableau de 20 valeurs aléatoires entre -10 et 40
-class sujetSurEcoute {
-    // Initialisation d'un tableau avec 20 valeurs aléatoires entre -10 et 40
-    A_tableau20Valeurs = [];
-
-    // Affichage de la première valeur dans l'élément HTML avec l'ID "O_firstValue"
-    O_firstValue = document.getElementById("O_firstValue");
-
+export class sujetSurEcoute {
     constructor() {
-        for (var i = 0; i < 20; i++) {
-            this.A_tableau20Valeurs.push(this.getRandomArbitrary(-10, 40));
+        this.observers = [];
+        this.A_tableau20Valeurs = [];
+        this.currentValue = null;
+    }
+
+    // On ajoute un observateur
+    subscribe(observer) {
+        this.observers.push(observer);
+    }
+
+    // On notifie tout le monde
+    notify() {
+        this.observers.forEach(observer => observer.update(this.currentValue));
+    }
+
+    // Initialisation d'un tableau avec 20 valeurs aléatoires entre -10 et 40
+    initDonnees() {
+        for (let i = 0; i < 20; i++) {
+            this.A_tableau20Valeurs.push(Math.floor(Math.random() * (40 - (-10)) + -10));
         }
     }
 
-    // Fonction pour générer un nombre aléatoire
-    getRandomArbitrary(min, max) {
-        return Math.floor(Math.random() * (max - min) + min);
+    // On lance le cycle de notification toutes les 2 secondes
+    lancerCycle() {
+        let i = 0;
+        setInterval(() => {
+            if (i < this.A_tableau20Valeurs.length) {
+                this.currentValue = this.A_tableau20Valeurs[i];
+                this.notify();
+            } else {
+                i = -1;
+            }
+            i++;
+        }, 2000);
     }
 }
