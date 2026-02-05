@@ -8,6 +8,7 @@ export class C_gererValeurTempsReel {
 
     // Fonction de mise à jour de l'interface
     update(temperature) {
+        console.log("Mise à jour de la valeur temps réel : " + temperature);
         this.O_firstValue.textContent = temperature;
         this.O_temperatureMeter.setAttribute("value", temperature);
         this.O_commentaire.hidden = true;

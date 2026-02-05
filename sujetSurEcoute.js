@@ -1,7 +1,9 @@
+import { C_genereValeursTemperatures } from "./genereValeursTemperatures.js";
+
 export class sujetSurEcoute {
     constructor() {
         this.observers = [];
-        this.A_tableau20Valeurs = [];
+        this.A_tableau20Valeurs = new C_genereValeursTemperatures().getTableau20Valeurs();
         this.currentValue = null;
     }
 
@@ -14,14 +16,6 @@ export class sujetSurEcoute {
     notify() {
         this.observers.forEach(observer => observer.update(this.currentValue));
     }
-
-    // Initialisation d'un tableau avec 20 valeurs aléatoires entre -10 et 40
-    initDonnees() {
-        for (let i = 0; i < 20; i++) {
-            this.A_tableau20Valeurs.push(Math.floor(Math.random() * (40 - (-10)) + -10));
-        }
-    }
-
     // On lance le cycle de notification toutes les 2 secondes
     lancerCycle() {
         let i = 0;

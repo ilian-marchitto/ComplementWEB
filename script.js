@@ -5,7 +5,6 @@ import { C_gererValeurTempsReel } from "./gererValeurTempsReel.js";
 class C_script {
     constructor() {
         this.sujetSurEcoute = new sujetSurEcoute();
-        this.sujetSurEcoute.initDonnees();
 
         this.gererValeurTempsReel = new C_gererValeurTempsReel();
         this.gererHistorique = new C_gererHistorique();
