@@ -1,6 +1,7 @@
 import { sujetSurEcoute } from "./sujetSurEcoute.js";
 import { C_gererHistorique } from "./gererHistorique.js";
 import { C_gererValeurTempsReel } from "./gererValeurTempsReel.js";
+import { C_donneeAjax } from "./donneeAjax.js";
 
 class C_script {
     constructor() {
@@ -14,7 +15,8 @@ class C_script {
 
         this.gestionnairePage();
 
-        this.sujetSurEcoute.lancerCycle();
+        this.donneeAjax = new C_donneeAjax();
+        this.donneeAjax.recupererDonnees();
     }
 
     // Gestion de l'affichage des parties température et historique

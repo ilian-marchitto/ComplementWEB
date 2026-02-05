@@ -1,10 +1,7 @@
-import { C_genereValeursTemperatures } from "./genereValeursTemperatures.js";
-
 export class sujetSurEcoute {
     constructor() {
         this.observers = [];
-        this.A_tableau20Valeurs = new C_genereValeursTemperatures().getTableau20Valeurs();
-        this.currentValue = null;
+        this.currentData = null;
     }
 
     // On ajoute un observateur
@@ -14,19 +11,21 @@ export class sujetSurEcoute {
 
     // On notifie tout le monde
     notify() {
-        this.observers.forEach(observer => observer.update(this.currentValue));
+        this.observers.forEach(observer => observer.update(parseInt(this.currentData.valeur, 10)));
     }
-    // On lance le cycle de notification toutes les 2 secondes
-    lancerCycle() {
-        let i = 0;
-        setInterval(() => {
-            if (i < this.A_tableau20Valeurs.length) {
-                this.currentValue = this.A_tableau20Valeurs[i];
-                this.notify();
-            } else {
-                i = -1;
-            }
-            i++;
-        }, 2000);
+    
+    nouvelleMesure(valeur, type, nom, timestamp) {
+        this.currentData = {
+            valeur: valeur,
+            type: type,
+            nom: nom,
+            timestamp: timestamp
+        };
+        
+        this.notify();
+    }
+
+    getCurrentData() {
+        return this.currentData;
     }
 }
