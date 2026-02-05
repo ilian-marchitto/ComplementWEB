@@ -5,7 +5,9 @@ import { C_donneeAjax } from "./donneeAjax.js";
 
 class C_script {
     constructor() {
-        this.sujetSurEcoute = new sujetSurEcoute();
+        this.donneeAjax = new C_donneeAjax();
+
+        this.sujetSurEcoute = this.donneeAjax.getSujet();
 
         this.gererValeurTempsReel = new C_gererValeurTempsReel();
         this.gererHistorique = new C_gererHistorique();
@@ -15,7 +17,6 @@ class C_script {
 
         this.gestionnairePage();
 
-        this.donneeAjax = new C_donneeAjax();
         this.donneeAjax.recupererDonnees();
     }
 

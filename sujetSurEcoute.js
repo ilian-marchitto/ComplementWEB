@@ -11,12 +11,12 @@ export class sujetSurEcoute {
 
     // On notifie tout le monde
     notify() {
-        this.observers.forEach(observer => observer.update(parseInt(this.currentData.valeur, 10)));
+        this.observers.forEach(observer => observer.update(this.currentData.valeur, 10));
     }
     
     nouvelleMesure(valeur, type, nom, timestamp) {
         this.currentData = {
-            valeur: valeur,
+            valeur: parseFloat(valeur),
             type: type,
             nom: nom,
             timestamp: timestamp
